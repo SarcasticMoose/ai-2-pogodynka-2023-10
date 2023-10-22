@@ -24,7 +24,6 @@ class ForecastController extends AbstractController
     #[Route('/wheather/{cityName}/{countryCode}',defaults: ['countryCode' => 'PL'])]
     public function GetForecast(
         ForecastRepository $forecastRepository,
-        ?string $countryCode,
         #[MapEntity(expr: 'repository.findByName(cityName,countryCode)')]
         City $city) : Response
     {
