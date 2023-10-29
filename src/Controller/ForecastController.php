@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class ForecastController extends AbstractController
 {
 
-    #[Route('/forecast/{id}', name: 'app_forecast', requirements: ['id' => '\d+'])]
+    /*#[Route('/forecast/{id}', name: 'app_forecast', requirements: ['id' => '\d+'])]
     public function index(): Response
     {
         return $this->render('forecast/city.html.twig', [
             'controller_name' => 'ForecastController',
         ]);
-    }
+    }*/
 
-    #[Route('/wheather/{cityName}/{countryCode}',defaults: ['countryCode' => 'PL'])]
+  /*  #[Route('/wheather/{cityName}/{countryCode}',defaults: ['countryCode' => 'PL'])]
     public function GetForecast(
         ForecastRepository $forecastRepository,
         #[MapEntity(expr: 'repository.findByName(cityName,countryCode)')]
@@ -33,5 +33,5 @@ class ForecastController extends AbstractController
             'city' => $city,
             'forecast' => $forecast
         ]);
-    }
+    }*/
 }
