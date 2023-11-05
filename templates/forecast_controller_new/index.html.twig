@@ -31,8 +31,12 @@
                 <td>{{ forecast.AmountOfPrecipitation }}</td>
                 <td>{{ forecast.Date ? forecast.Date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_forecast_controller_new_show', {'id': forecast.id}) }}">show</a>
-                    <a href="{{ path('app_forecast_controller_new_edit', {'id': forecast.id}) }}">edit</a>
+                    {% if is_granted('ROLE_FORECAST_SHOW') %}
+                        <a href="{{ path('app_forecast_controller_new_show', {'id': forecast.id}) }}">show</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_FORECAST_EDIT') %}
+                        <a href="{{ path('app_forecast_controller_new_edit', {'id': forecast.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -42,6 +46,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_forecast_controller_new_new') }}">Create new</a>
+    {% if is_granted('ROLE_FORECAST_NEW') %}
+        <a href="{{ path('app_forecast_controller_new_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
