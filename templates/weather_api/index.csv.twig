@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %}Measurements csv{% endblock %}
+{% block body %}
+city,country,date,celsius,fahrenheit
+{% for measurement in measurements %}
+{{ city }},{{ country }},{{ measurement.date | date('Y-m-d') }},{{ measurement.celsius }}, {{ measurement.fahrenheit }}
+{% endfor %}
+{% endblock %}
